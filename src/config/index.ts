@@ -1,4 +1,5 @@
 import env from 'react-native-config'
+import { Platform } from 'react-native'
 
 const config = {
   api: {
@@ -7,10 +8,19 @@ const config = {
   }
 };
 
+const iOS = Platform.OS === 'ios'
+const Android = Platform.OS === 'android'
+
+const OS = {
+  iOS,
+  Android
+}
+
 const API_HOST = config.api.host;
 
 export {
-  API_HOST
+  API_HOST,
+  OS
 }
 
 export default config
