@@ -3,16 +3,24 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android-dev": "ENVFILE=.env react-native run-android",
+    "android-production": "ENVFILE=.env.production react-native run-android",
+    "android-staging": "ENVFILE=.env.staging react-native run-android",
+    "ios-dev": "ENVFILE=.env react-native run-ios",
+    "ios-production": "ENVFILE=.env.production react-native run-ios",
+    "ios-staging": "ENVFILE=.env.staging react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "fix": "eslint . --fix"
+    "fix": "eslint . --fix",
+    "build-android-dev": "cd android && ENVFILE=.env ./gradlew assembleRelease",
+    "build-android-staging": "cd android && ENVFILE=.env.staging ./gradlew assembleRelease",
+    "build-android-production": "cd android && ENVFILE=.env.production ./gradlew assembleRelease"
   },
   "dependencies": {
     "react": "16.13.1",
-    "react-native": "0.63.1"
+    "react-native": "0.63.1",
+    "react-native-config": "^1.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",

@@ -1,4 +1,11 @@
 apply plugin: "com.android.application"
+project.ext.envConfigFiles = [
+        debug: ".env",
+        release: ".env",
+        stagingrelease: ".env.staging",
+        productionrelease: ".env.production"
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -122,12 +129,10 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     defaultConfig {
         applicationId "com.rnapp"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -161,6 +166,12 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        stagingrelease {
+            initWith release
+        }
+        productionrelease {
+            initWith release
         }
     }
 
