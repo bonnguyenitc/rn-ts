@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:react-native/all",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["@typescript-eslint", "react"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+    "sourceType": "module", // Allows for the use of imports
+    "ecmaFeatures": {
+      "tsx": true // Allows for the parsing of TSX
+    }
+  },
+  "rules": {
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1, {
+      "extensions": [
+        ".jsx",
+        ".tsx",
+        ".js"
+      ]
+    }],
+    "import/extensions": ["error", "ignorePackages", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never",
+      "json": "ignorePackages"
+    }],
+    "prettier/prettier": "error"
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  }
+}
