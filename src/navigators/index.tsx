@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import Icon from 'react-native-vector-icons/AntDesign';
+import ROUTE_NAME from './RouterName';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -16,7 +17,7 @@ function Tabs() {
       lazy
     >
       <Tab.Screen
-        name="Home"
+        name={ROUTE_NAME.Home}
         component={HomeScreen}
         options={{
           tabBarIcon: ({ focused, color }) =>
@@ -24,7 +25,7 @@ function Tabs() {
         }}
       />
       <Tab.Screen
-        name="Login"
+        name={ROUTE_NAME.Account}
         component={LoginScreen}
         options={{
           tabBarIcon: ({ focused, color }) =>
@@ -38,7 +39,15 @@ function Tabs() {
 function RootNavigator() {
   return (
     <NavigationContainer>
-      <Tabs />
+      <Stack.Navigator
+        initialRouteName={ROUTE_NAME.Main}
+        headerMode="none"
+      >
+        <Stack.Screen
+          name={ROUTE_NAME.Main}
+          component={Tabs}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
